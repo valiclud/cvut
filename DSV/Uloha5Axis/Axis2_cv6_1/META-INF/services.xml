@@ -1,0 +1,10 @@
+<service name="TestServer1">
+    <description>
+        Pokusny server c.1 pro potreby prezentace jednoduche aplikace.
+    </description>
+    <parameter name="ServiceClass" locked="false">x36dsv.cv6.TestServer1</parameter>
+    <operation name="echo">
+        <messageReceiver class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver"/> 
+        <actionMapping>urn:echo</actionMapping>
+    </operation>
+</service>

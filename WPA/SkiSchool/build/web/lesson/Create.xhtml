@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateLessonTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateLessonLabel_idLesson}" for="idLesson" />
+                    <h:inputText id="idLesson" value="#{lessonController.selected.idLesson}" title="#{bundle.CreateLessonTitle_idLesson}" required="true" requiredMessage="#{bundle.CreateLessonRequiredMessage_idLesson}"/>
+                    <h:outputLabel value="#{bundle.CreateLessonLabel_groupPriv}" for="groupPriv" />
+                    <h:inputText id="groupPriv" value="#{lessonController.selected.groupPriv}" title="#{bundle.CreateLessonTitle_groupPriv}" />
+                    <h:outputLabel value="#{bundle.CreateLessonLabel_grown}" for="grown" />
+                    <h:inputText id="grown" value="#{lessonController.selected.grown}" title="#{bundle.CreateLessonTitle_grown}" />
+                    <h:outputLabel value="#{bundle.CreateLessonLabel_level}" for="level" />
+                    <h:inputText id="level" value="#{lessonController.selected.level}" title="#{bundle.CreateLessonTitle_level}" />
+                    <h:outputLabel value="#{bundle.CreateLessonLabel_time}" for="time" />
+                    <h:inputText id="time" value="#{lessonController.selected.time}" title="#{bundle.CreateLessonTitle_time}" />
+                    <h:outputLabel value="#{bundle.CreateLessonLabel_fkRes}" for="fkRes" />
+                    <h:selectOneMenu id="fkRes" value="#{lessonController.selected.fkRes}" title="#{bundle.CreateLessonTitle_fkRes}" required="false" requiredMessage="#{bundle.CreateLessonRequiredMessage_fkRes}">
+                        <f:selectItems value="#{reservationController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{lessonController.create}" value="#{bundle.CreateLessonSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{lessonController.prepareList}" value="#{bundle.CreateLessonShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateLessonIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

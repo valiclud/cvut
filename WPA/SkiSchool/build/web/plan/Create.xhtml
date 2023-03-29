@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePlanTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePlanLabel_idPlan}" for="idPlan" />
+                    <h:inputText id="idPlan" value="#{planController.selected.idPlan}" title="#{bundle.CreatePlanTitle_idPlan}" required="true" requiredMessage="#{bundle.CreatePlanRequiredMessage_idPlan}"/>
+                    <h:outputLabel value="#{bundle.CreatePlanLabel_price}" for="price" />
+                    <h:inputText id="price" value="#{planController.selected.price}" title="#{bundle.CreatePlanTitle_price}" />
+                    <h:outputLabel value="#{bundle.CreatePlanLabel_provision}" for="provision" />
+                    <h:inputText id="provision" value="#{planController.selected.provision}" title="#{bundle.CreatePlanTitle_provision}" />
+                    <h:outputLabel value="#{bundle.CreatePlanLabel_salary}" for="salary" />
+                    <h:inputText id="salary" value="#{planController.selected.salary}" title="#{bundle.CreatePlanTitle_salary}" />
+                    <h:outputLabel value="#{bundle.CreatePlanLabel_fkPlanClient}" for="fkPlanClient" />
+                    <h:selectOneMenu id="fkPlanClient" value="#{planController.selected.fkPlanClient}" title="#{bundle.CreatePlanTitle_fkPlanClient}" required="true" requiredMessage="#{bundle.CreatePlanRequiredMessage_fkPlanClient}">
+                        <f:selectItems value="#{personController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePlanLabel_fkPlanIns}" for="fkPlanIns" />
+                    <h:selectOneMenu id="fkPlanIns" value="#{planController.selected.fkPlanIns}" title="#{bundle.CreatePlanTitle_fkPlanIns}" required="true" requiredMessage="#{bundle.CreatePlanRequiredMessage_fkPlanIns}">
+                        <f:selectItems value="#{personController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{planController.create}" value="#{bundle.CreatePlanSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{planController.prepareList}" value="#{bundle.CreatePlanShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePlanIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

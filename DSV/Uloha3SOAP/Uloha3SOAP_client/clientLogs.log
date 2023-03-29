@@ -1,0 +1,86 @@
+Input file "input.dbcsv" with database commands exists
+-------------------------------------------
+>> ListDB command 
+<< ListDB command OK databases: "adresy"
+<< ListDB command OK databases: "ahojky"
+<< ListDB command OK databases: "dobryden"
+<< ListDB command OK databases: "ahoj"
+-------------------------------------------
+>> Insert command database: "adresy" key: "1" message: "Jan Novotný, Zikova 7, Praha"
+<< ERROR in insert command - key "1" already exists, record was not inserted.
+-------------------------------------------
+>> CreateDB command database: "adresy"
+<< ERROR in createDB command - database "adresy" already exists
+-------------------------------------------
+>> CreateDB command database: "dobryden"
+<< ERROR in createDB command - database "dobryden" already exists
+-------------------------------------------
+>> ListDB command 
+<< ListDB command OK databases: "adresy"
+<< ListDB command OK databases: "ahojky"
+<< ListDB command OK databases: "dobryden"
+<< ListDB command OK databases: "ahoj"
+-------------------------------------------
+>> Insert command database: "adresy" key: "256" message: "Adéla Krátká, Lovosice 345"
+<< ERROR in insert command - key "256" already exists, record was not inserted.
+-------------------------------------------
+>> Update command database: "adresy" key: "256" message: "Adéla Dlouhá, Lovosice 345"
+<< Update command OK
+-------------------------------------------
+<< ERROR - Command "ghCHr6" does not exist
+-------------------------------------------
+>> CreateDB command database: "ahoj"
+<< ERROR in createDB command - database "ahoj" already exists
+-------------------------------------------
+>> Insert command database: "ahoj" key: "1" message: "Toník Pomalý, Rychlá Lhota 345"
+<< ERROR in insert command - key "1" already exists, record was not inserted.
+-------------------------------------------
+>> Insert command database: "ahoj" key: "2" message: "Otakar Ospalý, Èilá Lhota 128"
+<< ERROR in insert command - key "2" already exists, record was not inserted.
+-------------------------------------------
+>> Insert command database: "ahoj" key: "3" message: "Anastázie Strakatá, Šedá Lhota 222"
+<< ERROR in insert command - key "3" already exists, record was not inserted.
+-------------------------------------------
+>> Insert command database: "ahoj" key: "4" message: "Oldøiška Nová, Stará Lhota 333"
+<< ERROR in insert command - key "4" already exists, record was not inserted.
+-------------------------------------------
+>> Flush command
+<< Flush command OK
+-------------------------------------------
+>> ListDB command 
+<< ListDB command OK databases: "adresy"
+<< ListDB command OK databases: "ahojky"
+<< ListDB command OK databases: "dobryden"
+<< ListDB command OK databases: "ahoj"
+-------------------------------------------
+>> Get record command from database: "ahoj" key: "3"
+<< Get record command OK key: 3 message:  Anastázie Strakatá, Šedá Lhota 222
+-------------------------------------------
+>> Get record command from database: "ahoj" key: "1"
+<< Get record command OK key: 1 message:  Toník Pomalý, Rychlá Lhota 345
+-------------------------------------------
+>> Get record command from database: "adresy" key: "1"
+<< Get record command OK key: 1 message:  Jan Novotný, Zikova 7, Praha
+-------------------------------------------
+<< ERROR - Command "gettt" does not exist
+-------------------------------------------
+>> getA records command from database: "adresy" from key: "1" to key: "3"
+<< GetA records command OK key: 1 message: Jan Novotný, Zikova 7, Praha
+-------------------------------------------
+>> getA records command from database: "ahoj" from key: "1" to key: "3"
+<< GetA records command OK key: 3 message: Anastázie Strakatá, Šedá Lhota 222
+<< GetA records command OK key: 1 message: Toník Pomalý, Rychlá Lhota 345
+<< GetA records command OK key: 2 message: Otakar Ospalý, Èilá Lhota 128
+-------------------------------------------
+>> Insert command database: "nazdar" key: "256" message: "Adéla Krátká, Lovosice 345"
+<< ERROR in insert command - database "nazdar" does not exist. 
+-------------------------------------------
+>> Flush command
+<< Flush command OK
+-------------------------------------------
+>> getA records command from database: "adresy" from key: "1" to key: "32"
+<< GetA records command OK key: 1 message: Jan Novotný, Zikova 7, Praha
+-------------------------------------------
+>> Update command database: "nazdar" key: "2566" message: "Adéla Dlouhá, Lovosice 345"
+<< ERROR in update command - database "nazdar" does not exist. 
+-------------------------------------------

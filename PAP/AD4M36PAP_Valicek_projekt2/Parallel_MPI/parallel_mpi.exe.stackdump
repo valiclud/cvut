@@ -1,0 +1,9 @@
+Exception: STATUS_ACCESS_VIOLATION at eip=00401DD2
+eax=0044C3C0 ebx=00000000 ecx=00000000 edx=7EE40008 esi=00000000 edi=00000000
+ebp=0028AC68 esp=0028A890 program=C:\Users\Ludvik\Documents\NetBeansProjects\Parallel_MPI\dist\Debug\Cygwin-Windows\parallel_mpi.exe, pid 2652, thread main
+cs=0023 ds=002B es=002B fs=0053 gs=002B ss=002B
+Stack trace:
+Frame     Function  Args
+0028AC68  00401DD2  (00000001, 0028AC90, 20010100, 612766CB)
+0028ACF8  6100763A  (00000000, 0028CD78, 61006C50, 00000000)
+End of stack trace

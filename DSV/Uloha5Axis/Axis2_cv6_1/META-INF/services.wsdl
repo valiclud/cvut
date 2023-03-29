@@ -1,0 +1,64 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns="http://TestServer1.cv6.x36dsv" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns6="http://TestServer1.cv6.x36dsv/types" targetNamespace="http://TestServer1.cv6.x36dsv">
+	<wsdl:types>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:types="http://TestServer1.cv6.x36dsv/types" targetNamespace="http://TestServer1.cv6.x36dsv/types" elementFormDefault="unqualified" attributeFormDefault="unqualified">
+			<xs:element name="echo">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element type="xs:anyType" name="element" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="echoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element type="xs:anyType" name="return" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="echoMessage">
+		<wsdl:part element="ns6:echo" name="part1" />
+	</wsdl:message>
+	<wsdl:message name="echoResponseMessage">
+		<wsdl:part element="ns6:echoResponse" name="part1" />
+	</wsdl:message>
+	<wsdl:portType name="TestServer1PortType">
+		<wsdl:operation name="echo">
+			<wsdl:input message="ns:echoMessage" />
+			<wsdl:output message="ns:echoResponseMessage" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding type="ns:TestServer1PortType" name="TestServer1SOAP11Binding">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="echo">
+			<soap:operation style="document" soapAction="urn:echo" />
+			<wsdl:input>
+				<soap:body namespace="http://TestServer1.cv6.x36dsv" use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body namespace="http://TestServer1.cv6.x36dsv" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:binding type="ns:TestServer1PortType" name="TestServer1SOAP12Binding">
+		<soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="echo">
+			<soap12:operation style="document" soapAction="urn:echo" />
+			<wsdl:input>
+				<soap12:body namespace="http://TestServer1.cv6.x36dsv" use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body namespace="http://TestServer1.cv6.x36dsv" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="TestServer1">
+		<wsdl:port binding="ns:TestServer1SOAP11Binding" name="TestServer1SOAP11port">
+			<soap:address location="http://localhost:8080/axis2/services/TestServer1" />
+		</wsdl:port>
+		<wsdl:port binding="ns:TestServer1SOAP12Binding" name="TestServer1SOAP12port">
+			<soap12:address location="http://localhost:8080/axis2/services/TestServer1" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

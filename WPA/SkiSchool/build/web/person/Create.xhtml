@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePersonTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_idPerson}" for="idPerson" />
+                    <h:inputText id="idPerson" value="#{personController.selected.idPerson}" title="#{bundle.CreatePersonTitle_idPerson}" required="true" requiredMessage="#{bundle.CreatePersonRequiredMessage_idPerson}"/>
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{personController.selected.name}" title="#{bundle.CreatePersonTitle_name}" />
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_surname}" for="surname" />
+                    <h:inputText id="surname" value="#{personController.selected.surname}" title="#{bundle.CreatePersonTitle_surname}" />
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{personController.selected.email}" title="#{bundle.CreatePersonTitle_email}" />
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_telephone}" for="telephone" />
+                    <h:inputText id="telephone" value="#{personController.selected.telephone}" title="#{bundle.CreatePersonTitle_telephone}" />
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_skiSnb}" for="skiSnb" />
+                    <h:inputText id="skiSnb" value="#{personController.selected.skiSnb}" title="#{bundle.CreatePersonTitle_skiSnb}" />
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_typ}" for="typ" />
+                    <h:inputText id="typ" value="#{personController.selected.typ}" title="#{bundle.CreatePersonTitle_typ}" required="true" requiredMessage="#{bundle.CreatePersonRequiredMessage_typ}"/>
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_licence}" for="licence" />
+                    <h:inputText id="licence" value="#{personController.selected.licence}" title="#{bundle.CreatePersonTitle_licence}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{personController.create}" value="#{bundle.CreatePersonSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{personController.prepareList}" value="#{bundle.CreatePersonShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePersonIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

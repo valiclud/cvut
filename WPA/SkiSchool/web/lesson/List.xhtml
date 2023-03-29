@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListLessonTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListLessonEmpty}" rendered="#{lessonController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{lessonController.items.rowCount > 0}">
+                    <h:outputText value="#{lessonController.pagination.pageFirstItem + 1}..#{lessonController.pagination.pageLastItem + 1}/#{lessonController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{lessonController.previous}" value="#{bundle.Previous} #{lessonController.pagination.pageSize}" rendered="#{lessonController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{lessonController.next}" value="#{bundle.Next} #{lessonController.pagination.pageSize}" rendered="#{lessonController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{lessonController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLessonTitle_idLesson}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idLesson}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLessonTitle_groupPriv}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.groupPriv}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLessonTitle_grown}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.grown}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLessonTitle_level}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.level}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLessonTitle_time}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.time}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLessonTitle_fkRes}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fkRes}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{lessonController.prepareView}" value="#{bundle.ListLessonViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{lessonController.prepareEdit}" value="#{bundle.ListLessonEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{lessonController.destroy}" value="#{bundle.ListLessonDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{lessonController.prepareCreate}" value="#{bundle.ListLessonCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListLessonIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

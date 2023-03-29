@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewReservationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewReservationLabel_idRes}"/>
+                    <h:outputText value="#{reservationController.selected.idRes}" title="#{bundle.ViewReservationTitle_idRes}"/>
+                    <h:outputText value="#{bundle.ViewReservationLabel_date}"/>
+                    <h:outputText value="#{reservationController.selected.date}" title="#{bundle.ViewReservationTitle_date}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewReservationLabel_fromDate}"/>
+                    <h:outputText value="#{reservationController.selected.fromDate}" title="#{bundle.ViewReservationTitle_fromDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewReservationLabel_toDate}"/>
+                    <h:outputText value="#{reservationController.selected.toDate}" title="#{bundle.ViewReservationTitle_toDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewReservationLabel_fkResClient}"/>
+                    <h:outputText value="#{reservationController.selected.fkResClient}" title="#{bundle.ViewReservationTitle_fkResClient}"/>
+                    <h:outputText value="#{bundle.ViewReservationLabel_fkLesson}"/>
+                    <h:outputText value="#{reservationController.selected.fkLesson}" title="#{bundle.ViewReservationTitle_fkLesson}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{reservationController.destroyAndView}" value="#{bundle.ViewReservationDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewReservationEditLink}"/>
+                <br />
+                <h:commandLink action="#{reservationController.prepareCreate}" value="#{bundle.ViewReservationCreateLink}" />
+                <br />
+                <h:commandLink action="#{reservationController.prepareList}" value="#{bundle.ViewReservationShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewReservationIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

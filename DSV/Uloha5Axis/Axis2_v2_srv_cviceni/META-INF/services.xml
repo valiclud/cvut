@@ -1,0 +1,6 @@
+<service>
+<parameter name="ServiceClass" locked="false">x36dsv.soap.SimpleService</parameter>
+   <operation name="repeatMessage">
+   <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+</operation>
+</service>

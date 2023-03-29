@@ -1,0 +1,24 @@
+<service>
+<parameter name="ServiceClass" locked="false">simpledb.DBRecordDAO</parameter>
+   <operation name="listDB">
+   <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+   </operation>
+    <operation name="createDB">
+   <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+   </operation>
+    <operation name="insert">
+   <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+   </operation>
+    <operation name="update">
+   <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+   </operation>
+    <operation name="get">
+   <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+   </operation>
+    <operation name="getA">
+   <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+   </operation>
+    <operation name="flush">
+   <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+   </operation>
+</service>

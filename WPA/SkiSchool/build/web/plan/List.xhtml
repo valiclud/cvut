@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPlanTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPlanEmpty}" rendered="#{planController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{planController.items.rowCount > 0}">
+                    <h:outputText value="#{planController.pagination.pageFirstItem + 1}..#{planController.pagination.pageLastItem + 1}/#{planController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{planController.previous}" value="#{bundle.Previous} #{planController.pagination.pageSize}" rendered="#{planController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{planController.next}" value="#{bundle.Next} #{planController.pagination.pageSize}" rendered="#{planController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{planController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPlanTitle_idPlan}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPlan}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPlanTitle_price}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.price}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPlanTitle_provision}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.provision}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPlanTitle_salary}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.salary}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPlanTitle_fkPlanClient}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fkPlanClient}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPlanTitle_fkPlanIns}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fkPlanIns}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{planController.prepareView}" value="#{bundle.ListPlanViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{planController.prepareEdit}" value="#{bundle.ListPlanEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{planController.destroy}" value="#{bundle.ListPlanDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{planController.prepareCreate}" value="#{bundle.ListPlanCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPlanIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

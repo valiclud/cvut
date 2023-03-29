@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditReservationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditReservationLabel_idRes}" for="idRes" />
+                    <h:inputText id="idRes" value="#{reservationController.selected.idRes}" title="#{bundle.EditReservationTitle_idRes}" required="true" requiredMessage="#{bundle.EditReservationRequiredMessage_idRes}"/>
+                    <h:outputLabel value="#{bundle.EditReservationLabel_date}" for="date" />
+                    <h:inputText id="date" value="#{reservationController.selected.date}" title="#{bundle.EditReservationTitle_date}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditReservationLabel_fromDate}" for="fromDate" />
+                    <h:inputText id="fromDate" value="#{reservationController.selected.fromDate}" title="#{bundle.EditReservationTitle_fromDate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditReservationLabel_toDate}" for="toDate" />
+                    <h:inputText id="toDate" value="#{reservationController.selected.toDate}" title="#{bundle.EditReservationTitle_toDate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditReservationLabel_fkResClient}" for="fkResClient" />
+                    <h:selectOneMenu id="fkResClient" value="#{reservationController.selected.fkResClient}" title="#{bundle.EditReservationTitle_fkResClient}" required="true" requiredMessage="#{bundle.EditReservationRequiredMessage_fkResClient}">
+                        <f:selectItems value="#{personController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditReservationLabel_fkLesson}" for="fkLesson" />
+                    <h:selectOneMenu id="fkLesson" value="#{reservationController.selected.fkLesson}" title="#{bundle.EditReservationTitle_fkLesson}" required="true" requiredMessage="#{bundle.EditReservationRequiredMessage_fkLesson}">
+                        <f:selectItems value="#{lessonController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{reservationController.update}" value="#{bundle.EditReservationSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditReservationViewLink}"/>
+                <br />
+                <h:commandLink action="#{reservationController.prepareList}" value="#{bundle.EditReservationShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditReservationIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
