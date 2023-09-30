@@ -12,20 +12,20 @@ public class SolutionOddFibNumbers {
         Scanner in = new Scanner(System.in);
         int t = in.nextInt();
         for(int a0 = 0; a0 < t; a0++){
-        	BigDecimal n = new BigDecimal(in.nextLong());
-            BigDecimal f[] = new BigDecimal[80];
-    		f[0] = new BigDecimal(0);
-    		f[1] = new BigDecimal(1);
-    		f[2] = new BigDecimal(1);
-    		BigDecimal sum = new BigDecimal(0);
+        	long n = in.nextLong();
+            long f[] = new long[8000];
+    		f[0] = 0L;
+    		f[1] = 1L;
+    		f[2] = 1L;
+    		long sum = 0L;
     		for (int i = 3; i < f.length; i++) {
-    			f[i] = f[i - 1].add(f[i - 2]);
-    			if (f[i].compareTo(n) == 1) {
+    			f[i] = f[i - 1] + f[i - 2];
+    			if (f[i] > n ) {
     				System.out.println(sum);
     				break;
     			}
-    			if (i%3 == 0)
-    				sum = sum.add(f[i]);
+    			if (f[i]%2 == 0)
+    				sum += f[i];
     		}
         }
     }

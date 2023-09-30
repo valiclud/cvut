@@ -18,7 +18,7 @@ public class SolutionLargestPrime {
             	continue;
             }
             long primeMax = 0;
-            for(int i = 2; i< n; i++) {
+            for(int i = 2; i<= Math.sqrt(n); i++) {
                 while(n%i == 0) {
                    n = n/i;
                    primeMax = i;

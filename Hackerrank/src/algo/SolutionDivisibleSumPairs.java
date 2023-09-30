@@ -55,7 +55,6 @@ public class SolutionDivisibleSumPairs {
             .collect(toList());
 
         int result = Result.divisibleSumPairs(n, k, ar);
-        System.out.println(result);
 
         bufferedWriter.write(String.valueOf(result));
         bufferedWriter.newLine();
