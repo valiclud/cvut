@@ -21,6 +21,7 @@ public class SolutionDoubleBasedPalindrom {
 		return true;
 	}
 	
+	
 	private static long asBase(long num, int base) {
 	    long ret = 0, factor = 1;
 	    while (num > 0) {
@@ -31,10 +32,11 @@ public class SolutionDoubleBasedPalindrom {
 	    return ret;
 	}
 	
-	private static long getKBasedSum(int n, int k) {
-		long sum = 0;
+	private static int getKBasedSum(int n, int k) {
+		int sum = 0;
 		for (int i = 1; i <= n; i++) {
-			String s = Long.toString(asBase(i, k));
+			//String s = Long.toString(asBase(i, k));
+			String s = Long.toBinaryString(i);
 			if (isPalindrome(s) && isPalindrome(Long.toString(i))) {
 				sum += i;
 			}
@@ -42,15 +44,35 @@ public class SolutionDoubleBasedPalindrom {
 		return sum;
 	}	
 	
+	private static boolean isPalindromeBase(int n, int base) {
+		int reversed = 0;
+		int k = n;
+		while (k > 0) {
+			reversed = base * reversed + k % base;
+			k = k / base;
+		}
+		return (n == reversed);
+	}
+	
+	private static int getBasedSum(int n, int k) {
+		int sum = 0;
+		for (int i = 1; i <= n; i++) {
+			if (isPalindromeBase(i, 10) && isPalindromeBase(i, k)) {
+				sum += i;
+			}
+		}
+		return sum;
+	}	
+	
+	
     public static void main(String[] args) throws NumberFormatException, IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
 
         List<Integer> arr = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
             .map(Integer::parseInt)
             .collect(toList());
 
-        System.out.println(getKBasedSum(arr.get(0), arr.get(1)));
+        System.out.println(getBasedSum(arr.get(0), arr.get(1)));
         
     }
 }
