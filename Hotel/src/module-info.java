@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author valic
+ *
+ */
+module Hotel {
+}
