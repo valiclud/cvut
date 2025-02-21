@@ -8,7 +8,7 @@ package core;
  * @author Ludvik Valicek
  */
 
-public class CustomerId extends AbstractId {
+public class PersonId extends AbstractId {
 
 	/**
 	 * 
@@ -20,7 +20,7 @@ public class CustomerId extends AbstractId {
 	 *
 	 * @param idNumber the id number
 	 */
-	public CustomerId(int idNumber) {
+	public PersonId(int idNumber) {
 		super(idNumber);
 
 	}

@@ -10,39 +10,30 @@ import java.io.Serializable;
  * @author Ludvik Valicek
  */
 
-public class Customer implements Serializable {
+public class Customer extends Person implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/** The customer id. */
-	private CustomerId customerId;
-
-	/** The name. */
-	private String name;
-
-	/** The surname. */
-	private String surname;
-
-	/** The address. */
-	private String address;
-
-	/** The commentary. */
-	private String commentary;
+	/** The passport No. */
+	private String passportNo;
 
 	/**
 	 * Instantiates a new customer.
 	 *
 	 * @param customerId the customer id
+	 * @param passportNo the passport No
 	 * @param name       the name
 	 * @param surname    the surname
 	 * @param address    the address
 	 * @param commentary the commentary
 	 */
-	public Customer(CustomerId customerId, String name, String surname, String address, String commentary) {
+	public Customer(PersonId customerId, String passportNo, String name, String surname, String address,
+			String commentary) {
 		this.customerId = customerId;
+		this.passportNo = passportNo;
 		this.name = name;
 		this.surname = surname;
 		this.address = address;
@@ -50,84 +41,21 @@ public class Customer implements Serializable {
 	}
 
 	/**
-	 * Gets the customer id.
+	 * Gets the passportNo.
 	 *
-	 * @return the customer id
+	 * @return the passportNo
 	 */
-	public CustomerId getCustomerId() {
-		return customerId;
+	public String getPassportNo() {
+		return passportNo;
 	}
 
 	/**
-	 * Gets the name.
+	 * Sets the passportNo.
 	 *
-	 * @return the name
+	 * @param passportNo the new passportNo
 	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * Sets the name.
-	 *
-	 * @param name the new name
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	/**
-	 * Gets the surname.
-	 *
-	 * @return the surname
-	 */
-	public String getSurname() {
-		return surname;
-	}
-
-	/**
-	 * Sets the surname.
-	 *
-	 * @param surname the new surname
-	 */
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
-
-	/**
-	 * Gets the address.
-	 *
-	 * @return the address
-	 */
-	public String getAddress() {
-		return address;
-	}
-
-	/**
-	 * Sets the address.
-	 *
-	 * @param address the new address
-	 */
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	/**
-	 * Gets the commentary.
-	 *
-	 * @return the commentary
-	 */
-	public String getCommentary() {
-		return commentary;
-	}
-
-	/**
-	 * Sets the commentary.
-	 *
-	 * @param commentary the new commentary
-	 */
-	public void setCommentary(String commentary) {
-		this.commentary = commentary;
+	public void setPassportNo(String passportNo) {
+		this.passportNo = passportNo;
 	}
 
 	/*

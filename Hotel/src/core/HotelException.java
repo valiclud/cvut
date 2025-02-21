@@ -6,7 +6,7 @@ package core;
  *
  * @author root
  */
-public class AddressaryException extends java.lang.Exception {
+public class HotelException extends java.lang.Exception {
 
 	/**
 	 * 
@@ -18,7 +18,7 @@ public class AddressaryException extends java.lang.Exception {
 	 *
 	 * @param s the s
 	 */
-	public AddressaryException(String s) {
+	public HotelException(String s) {
 		super(s);
 	}
 
@@ -27,7 +27,7 @@ public class AddressaryException extends java.lang.Exception {
 	 *
 	 * @param c the c
 	 */
-	public AddressaryException(Throwable c) {
+	public HotelException(Throwable c) {
 		super(c);
 	}
 }
