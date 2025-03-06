@@ -23,16 +23,16 @@ public class Customer extends Person implements Serializable {
 	/**
 	 * Instantiates a new customer.
 	 *
-	 * @param customerId the customer id
+	 * @param personId the customer id
 	 * @param passportNo the passport No
 	 * @param name       the name
 	 * @param surname    the surname
 	 * @param address    the address
 	 * @param commentary the commentary
 	 */
-	public Customer(PersonId customerId, String passportNo, String name, String surname, String address,
+	public Customer(PersonId personId, String passportNo, String name, String surname, String address,
 			String commentary) {
-		this.customerId = customerId;
+		this.personId = personId;
 		this.passportNo = passportNo;
 		this.name = name;
 		this.surname = surname;
@@ -58,6 +58,8 @@ public class Customer extends Person implements Serializable {
 		this.passportNo = passportNo;
 	}
 
+	
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -65,6 +67,6 @@ public class Customer extends Person implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return customerId + ":" + name;
+		return personId + ":" + name;
 	}
 }

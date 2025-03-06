@@ -3,7 +3,7 @@ package core;
 public abstract class Person {
 
 	/** The customer id. */
-	PersonId customerId;
+	PersonId personId;
 
 	/** The name. */
 	String name;
@@ -22,8 +22,8 @@ public abstract class Person {
 	 *
 	 * @return the customer id
 	 */
-	public PersonId getCustomerId() {
-		return customerId;
+	public PersonId getPersonId() {
+		return personId;
 	}
 	
 	/**
