@@ -2,6 +2,7 @@
 package core;
 
 import java.io.Serializable;
+import java.util.List;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -19,6 +20,8 @@ public class Customer extends Person implements Serializable {
 
 	/** The passport No. */
 	private String passportNo;
+	
+	private List rooms;
 
 	/**
 	 * Instantiates a new customer.
@@ -31,13 +34,14 @@ public class Customer extends Person implements Serializable {
 	 * @param commentary the commentary
 	 */
 	public Customer(PersonId personId, String passportNo, String name, String surname, String address,
-			String commentary) {
+			String commentary, List rooms) {
 		this.personId = personId;
 		this.passportNo = passportNo;
 		this.name = name;
 		this.surname = surname;
 		this.address = address;
 		this.commentary = commentary;
+		this.rooms = rooms;
 	}
 
 	/**
@@ -57,9 +61,15 @@ public class Customer extends Person implements Serializable {
 	public void setPassportNo(String passportNo) {
 		this.passportNo = passportNo;
 	}
+	
+	public List getRooms() {
+		return rooms;
+	}
 
-	
-	
+	public void setRooms(List rooms) {
+		this.rooms = rooms;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 

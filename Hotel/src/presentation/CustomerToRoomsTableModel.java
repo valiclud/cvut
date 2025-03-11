@@ -1,26 +1,37 @@
 package presentation;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
 import core.Customer;
 import core.PersonId;
+import core.Room;
+import core.RoomId;
 
-public class CustomersTableModel extends AbstractTableModel {
+public class CustomerToRoomsTableModel extends AbstractTableModel {
 
 	private List<Customer> customers = new ArrayList<Customer>();
 
-	CustomersTableModel(){ 
+	CustomerToRoomsTableModel(){ 
+    	Room r1 = new Room(new RoomId (1), (short) 11, (short) 3, false, false);
+        List<Room> l1 = Arrays.asList(r1); 
+    	Room r2 = new Room(new RoomId (2), (short) 11, (short) 3,  false, false);
+    	List<Room> l2 = Arrays.asList(r2);
+    	Room r3 = new Room(new RoomId (3), (short) 11, (short) 3,  false, false);
+    	List<Room> l3 = Arrays.asList(r3);
+    	Room r4 = new Room(new RoomId (4), (short) 11, (short) 3,  false, false);
+    	List<Room> l4 = Arrays.asList(r4);
     	Customer u1 = new Customer(new PersonId (1), "Ludvik", "Valíček", "Valiclud",
-    			"Lenora", "680306/1895", null) ;
+    			"Lenora", "680306/1895", l1) ;
     	Customer u2 = new Customer(new PersonId (2), "Ludvik", "Rýmový", "Rymlud",
-    			"Rýmička", "720306/1265", null) ;
+    			"Rýmička", "720306/1265", l2) ;
     	Customer u3 = new Customer(new PersonId (3), "Olda", "Zdravý", "Zdravold",
-    			"Hypochondrie", "750308/1595", null) ;
+    			"Hypochondrie", "750308/1595", l3) ;
     	Customer u4 = new Customer(new PersonId (4), "Alois", "Kočkorád", "Kockodan",
-    			"Slintavka", "850398/1895", null) ;
+    			"Slintavka", "850398/1895", l4) ;
     	customers.add(u1);
     	customers.add(u2);
     	customers.add(u3);
@@ -35,7 +46,7 @@ public class CustomersTableModel extends AbstractTableModel {
 	@Override
 	public int getColumnCount() {
 		// TODO Auto-generated method stub
-		return 7;
+		return 6;
 	}
 
 	@Override
@@ -71,13 +82,11 @@ public class CustomersTableModel extends AbstractTableModel {
 	            case 2:
 	                return "Příjmení";
 	            case 3:
-	                return "Diagnoza";
+	                return "Číslo pasu";
 	            case 4:
-	                return "Rodné číslo";
-	            case 5:
 	                return "Adresa";
-	            case 6:
-	            	return "Pojišťovna";
+	            case 5:
+	            	return "Komentář";
 	        }
 	        return null;
 	    }
