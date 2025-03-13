@@ -9,6 +9,15 @@ import core.Customer;
 import core.PersonId;
 
 public class CustomersTableModel extends AbstractTableModel {
+	
+	private static final String GUESTS = "Hosté ";
+	private static final String CUSTOMER_ID = "Id hosta";
+	private static final String PASSPORT_ID = "Číslo OP/pasu";
+	private static final String FIRST_NAME = "Jméno";
+	private static final String LAST_NAME = "Příjmení";
+	private static final String ADDRESS = "Adresa";
+	private static final String COMMENTARY = "Komentář";
+	private static final String ROOMS = "Pokoje";
 
 	private List<Customer> customers = new ArrayList<Customer>();
 
@@ -46,9 +55,9 @@ public class CustomersTableModel extends AbstractTableModel {
 		case 0:
 			return customer.getPersonId();
 		case 1:
-			return customer.getName();
-		case 2:
 			return customer.getSurname();
+		case 2:
+			return customer.getName();
 		case 3:
 			return customer.getPassportNo();
 		case 4:
@@ -65,19 +74,19 @@ public class CustomersTableModel extends AbstractTableModel {
 	    public String getColumnName(int column) {
 	        switch (column) {
 	            case 0:
-	                return "Id";
+	                return CUSTOMER_ID;
 	            case 1:
-	                return "Jméno";
+	            	return FIRST_NAME;
 	            case 2:
-	                return "Příjmení";
+	            	return LAST_NAME;	                
 	            case 3:
-	                return "Diagnoza";
+	                return PASSPORT_ID;
 	            case 4:
-	                return "Rodné číslo";
+	                return ADDRESS;
 	            case 5:
-	                return "Adresa";
+	                return COMMENTARY;
 	            case 6:
-	            	return "Pojišťovna";
+	            	return ROOMS;
 	        }
 	        return null;
 	    }

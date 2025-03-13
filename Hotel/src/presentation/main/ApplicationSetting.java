@@ -21,6 +21,13 @@ public class ApplicationSetting {
 	public static final int LETTER_MEDIUM = 12;
 	public static final int LETTER_SMALL = 10;
 	public static final int ROW_HEIGHT = 26;
+	public static final String MAIN_FONT = "Arial";
+	
+	
+	//signs
+	public static final String ITEM_FILTER = "Filtr položek: ";
+	public static final String TEXT_FILTER = "Vybrat text, který se má filtrovat";
+
 	
 	//database setting
 	public static final String connectionFile = "connection.txt";

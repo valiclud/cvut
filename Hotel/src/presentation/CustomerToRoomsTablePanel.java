@@ -62,7 +62,6 @@ public class CustomerToRoomsTablePanel  extends JPanel implements TableModelList
 	
 	private JComboBox<String> comboBox;
 
-	private Color originalColor, borderLetterColor, originalBorderLetterColor;
 	private Set<Customer> users = new HashSet<Customer>();
 	private boolean isFiltered;
 
@@ -83,9 +82,6 @@ public class CustomerToRoomsTablePanel  extends JPanel implements TableModelList
 
 	public CustomerToRoomsTablePanel() {
 
-		this.originalColor = COLOR_BASE;
-		this.borderLetterColor = COLOR_BASE_LETTERS;
-		this.originalBorderLetterColor = COLOR_BASE_LETTERS;
 		this.users.clear();
 		this.isFiltered = false;
 
@@ -98,11 +94,12 @@ public class CustomerToRoomsTablePanel  extends JPanel implements TableModelList
 		customerTable.setFillsViewportHeight(true);
 		handler = new ListSelectionHandler();
 
-		tableBorder = BorderFactory.createLineBorder(borderLetterColor, 1);
+		tableBorder = BorderFactory.createLineBorder(COLOR_BASE_LETTERS, 1);
 		this.setBorder(BorderFactory.createLineBorder(COLOR_BASE, 1));
 		MyTableCellRenderer cellRenderer = new MyTableCellRenderer(COLOR_BASE);
+		MyHeaderCellRenderer headerRenderer = new MyHeaderCellRenderer(COLOR_BASE, COLOR_BASE_LETTERS);
+		
 		customerTable.setDefaultRenderer(Object.class, cellRenderer);
-		MyHeaderCellRenderer headerRenderer = new MyHeaderCellRenderer(originalColor, originalBorderLetterColor);
 		header = customerTable.getTableHeader();
 		header.setDefaultRenderer(headerRenderer);
 
@@ -119,11 +116,11 @@ public class CustomerToRoomsTablePanel  extends JPanel implements TableModelList
 		titleB.setContentAreaFilled(true);
 		titleB.setBackground(COLOR_BUTTON_BACKGROUND);
 		titleB.setFont(new Font("Arial", Font.CENTER_BASELINE, LETTER_TALL));
-		titleB.setForeground(borderLetterColor);
+		titleB.setForeground(COLOR_BASE_LETTERS);
 		emptyBorder = BorderFactory.createEmptyBorder();
 		titleBorder = BorderFactory.createTitledBorder(emptyBorder, "Pacienti", TitledBorder.RIGHT,
 				TitledBorder.DEFAULT_POSITION);
-		titleBorder.setTitleColor(borderLetterColor);
+		titleBorder.setTitleColor(COLOR_BASE_LETTERS);
 		titleBorder.setTitleFont(new Font("Arial", Font.BOLD, LETTER_MEDIUM));
 
 	    jsp = new JScrollPane(customerTable);
@@ -138,7 +135,7 @@ public class CustomerToRoomsTablePanel  extends JPanel implements TableModelList
         form.setBackground(COLOR_BASE);
         filterLabel = new JLabel("Filter položek: ", SwingConstants.TRAILING);
         filterLabel.setFont(new Font("Arial", Font.BOLD, LETTER_MEDIUM));
-        filterLabel.setForeground(borderLetterColor);
+        filterLabel.setForeground(COLOR_BASE_LETTERS);
         form.add(filterLabel);
         filterText = new JTextField();      
   
@@ -151,7 +148,7 @@ public class CustomerToRoomsTablePanel  extends JPanel implements TableModelList
         
         comboBox.setRenderer(new DefaultListCellRenderer() {
             public void paint(Graphics g) {
-               setForeground(originalBorderLetterColor);
+               setForeground(COLOR_BASE_LETTERS);
                 setFont(new Font("Arial", Font.BOLD, LETTER_MEDIUM));
                 setToolTipText("Vybrat text, který se má filtrovat");
                 super.paint(g);
@@ -202,7 +199,7 @@ public class CustomerToRoomsTablePanel  extends JPanel implements TableModelList
         
         titleB.addActionListener(new ActionListener(){ 
             	public void actionPerformed(ActionEvent e){ 
-					//MainPanel.getInstance().usersOnlyPanel(parameter, originalColor, originalBorderLetterColor);   
+					//MainPanel.getInstance().usersOnlyPanel(parameter, COLOR_BASE, COLOR_BASE_LETTERS);   
             	} 
         	}); 
 	}
